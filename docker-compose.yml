@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: backend/Dockerfile
+  #   env_file: backend/.env
+  #   ports:
+  #     - "3333:3333"
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - app
+
+  frontend:
+    build: 
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    depends_on:
+      - postgres
+    networks:
+      - app
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p0stgr3s
+      POSTGRES_DB: gofinances
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/samuelfalico/volumes/postgres:/var/lib/postgresql/data
+    networks:
+      - app
+
+networks:
+  app:
+    external: false
+    name: app
