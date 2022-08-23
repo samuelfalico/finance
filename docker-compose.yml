@@ -15,7 +15,7 @@ services:
       - ORM_PORT=5432
       - ORM_USERNAME=postgres
       - ORM_PASSWORD=p0stgr3s
-      - ORM_DATABASE=gofinances
+      - ORM_DATABASE=finances
     ports:
       - "3333:3333"
     external_links:
@@ -47,6 +47,13 @@ services:
   migration:
     image: finances_backend:latest
     command: ["./wait-for-it/wait-for-it.sh", "postgres-docker:5432", "--", "yarn", "typeorm", "migration:run"]
+    environment:
+      - ORM_TYPE=postgres
+      - ORM_HOST=postgres-docker
+      - ORM_PORT=5432
+      - ORM_USERNAME=postgres
+      - ORM_PASSWORD=p0stgr3s
+      - ORM_DATABASE=finances
     external_links:
       - "postgres:postgres-docker"
     depends_on:
