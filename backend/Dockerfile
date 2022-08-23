@@ -1,3 +1,5 @@
+#!/bin/sh
+
 FROM node:12.13.0-alpine
 
 ENV NODE_ENV=development
@@ -15,6 +17,8 @@ RUN yarn
 COPY backend/ .
 
 # RUN yarn typeorm migration:run
+
+RUN chmod +x /app/wait-for-it/wait-for-it.sh
 
 EXPOSE 3333
 
