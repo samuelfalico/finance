@@ -2,8 +2,31 @@
 
 Finances é uma aplicação Web com o objetivo de controlar suas finanças, permitindo que você cadastre entradas, saídas e categorize-as de uma forma organizada!
 
-## 💻 Rodando a aplicação
+# 💻 Rodando a aplicação
 
+## 🐳 Usando docker-compose para subir a aplicação em container
+
+#### Requisitos
+
+- Docker ([Docker](https://docs.docker.com/engine/install/ubuntu/))
+- Docker-Compose ([Docker-Compose](https://docs.docker.com/compose/install/))
+
+**Executar o comando**
+
+```sh
+# Executar com os logs no terminal
+docker-compose up
+
+# Executar em segundo plano
+docker-compose up -d
+```
+
+**Abrir a aplicação no navegador**
+```sh
+http://localhost:3000/
+```
+
+## 💪🏻 Local
 #### Requisitos
 
 - NodeJS
